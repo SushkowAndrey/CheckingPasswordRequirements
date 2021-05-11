@@ -13,18 +13,6 @@ namespace CheckingPasswordRequirements
         private int minCountLowerCharacters = 2;//минимальное число символов нижнего регистра
         private char[] specialCharacters = new char[] {'!', '@', '#', '$', '%', '&', '*', '(', ')', '-', '=', '+', '/', '?', '№'};//допустимые буквы нижнего регистра
         private int minCountSpecialCharacters = 2;//минимальное число специальный символов
-        //сеттер для установления новых требований к паролю
-        /*public void SetDataPasswordRequirementsModel(int minCountSymbol, char[] acceptableDigits, int minCountDigits, char[] upperСaseСharacters, int minCountUpperCharacters,char[] lowerCaseCharacters, int minCountLowerCharacters, char[] specialCharacters, int minCountSpecialCharacters)
-        { 
-            this.minCountDigits=minCountSymbol;//минимальная длинна пароля
-            this.acceptableDigits=acceptableDigits;//допустимые цифры
-            this.minCountDigits=minCountDigits;//минимальное число цифр
-            this.upperСaseСharacters=upperСaseСharacters;//допустимые буквы верхнего регистраminCountUpperCharacters = 2;//минимальное число символов верхнего регистра
-            this.lowerCaseCharacters=lowerCaseCharacters;//допустимые буквы нижнего регистра
-            this.minCountLowerCharacters=minCountLowerCharacters;//минимальное число символов нижнего регистра
-            this.specialCharacters=specialCharacters;//допустимые буквы нижнего регистра
-            this.minCountSpecialCharacters=minCountSpecialCharacters;//
-        }*/
         public int GetMinCountSymbol()
         {
             return minCountSymbol;
