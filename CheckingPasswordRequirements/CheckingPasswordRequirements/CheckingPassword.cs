@@ -52,9 +52,9 @@ namespace CheckingPasswordRequirements
             }
         }
         //последовательсть цифр
-        private int SequenceDigits(string userPassword)
+        public int SequenceDigits(string userPassword)
         {
-            bool count = false;
+            bool count = true;
             for (int i = 0; i < passwordRequirementsModel.GetAcceptableDigits().Length-2; i++)
             {
                 for (int j = 0; j < userPassword.Length-2; j++)
@@ -63,11 +63,11 @@ namespace CheckingPasswordRequirements
                         userPassword[j + 1] == passwordRequirementsModel.GetAcceptableDigits()[i + 1] &&
                         userPassword[j + 2] == passwordRequirementsModel.GetAcceptableDigits()[i + 2])
                     {
-                        count = true;
+                        count = false;
                         break;
                     }
                 }
-                if (count) break;
+                if (!count) break;
             }
             if (count)
             {
@@ -108,9 +108,9 @@ namespace CheckingPasswordRequirements
             }
         }
         //последовательсность букв малого регистра
-        private int SequenceUpperСase(string userPassword)
+        public int SequenceUpperСase(string userPassword)
         {
-            bool count = false;
+            bool count = true;
             for (int i = 0; i < passwordRequirementsModel.GetUpperСaseСharacters().Length-2; i++)
             {
                 for (int j = 0; j < userPassword.Length-2; j++)
@@ -119,11 +119,11 @@ namespace CheckingPasswordRequirements
                         userPassword[j + 1] == passwordRequirementsModel.GetUpperСaseСharacters()[i + 1] &&
                         userPassword[j + 2] == passwordRequirementsModel.GetUpperСaseСharacters()[i + 2])
                     {
-                        count = true;
+                        count = false;
                         break;
                     }
                 }
-                if (count) break;
+                if (!count) break;
             }
             if (count)
             {
@@ -165,9 +165,9 @@ namespace CheckingPasswordRequirements
             }
         }
         //последовательсность букв малого регистра
-        private int SequenceLowerCase(string userPassword)
+        public int SequenceLowerCase(string userPassword)
         {
-            bool count = false;
+            bool count = true;
             for (int i = 0; i < passwordRequirementsModel.GetLowerCaseCharacters().Length-2; i++)
             {
                 for (int j = 0; j < userPassword.Length-2; j++)
@@ -176,11 +176,11 @@ namespace CheckingPasswordRequirements
                         userPassword[j + 1] == passwordRequirementsModel.GetLowerCaseCharacters()[i + 1] &&
                         userPassword[j + 2] == passwordRequirementsModel.GetLowerCaseCharacters()[i + 2])
                     {
-                        count = true;
+                        count = false;
                         break;
                     }
                 }
-                if (count) break;
+                if (!count) break;
             }
             if (count)
             {
