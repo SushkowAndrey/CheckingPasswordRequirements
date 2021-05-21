@@ -250,15 +250,31 @@ namespace CheckingPasswordRequirements
         public int DegreePasswordSecurity(string userPassword)
         {
             int degreePasswordSecurity = 0;
-            degreePasswordSecurity += CheckingLength(userPassword);//длинна пароля
+            /*degreePasswordSecurity += CheckingLength(userPassword);//длинна пароля
             degreePasswordSecurity += CheckingAcceptableDigits(userPassword);//наличие цифр
             if (CheckingAcceptableDigits(userPassword) == 0) degreePasswordSecurity += 0;
             else degreePasswordSecurity += SequenceDigits(userPassword);//порядок цифр
+            
             degreePasswordSecurity += CheckingUpperСase(userPassword);//наличие символов большого регистра
             if (CheckingUpperСase(userPassword)==0) degreePasswordSecurity += 0;
             else degreePasswordSecurity += SequenceUpperСase(userPassword);//порядок символов большого регистра
             degreePasswordSecurity += CheckinLowerCase(userPassword);//наличие символов малого регистра
+            
             if (CheckinLowerCase(userPassword)==0) degreePasswordSecurity += 0;
+            else degreePasswordSecurity += SequenceLowerCase(userPassword);//порядок символов малого регистра
+            degreePasswordSecurity += CheckintSpecialCharacters(userPassword);//наличие специальных*/
+            degreePasswordSecurity += CheckingLength(userPassword);
+            var checkingAcceptableDigits = CheckingAcceptableDigits(userPassword);//наличие цифр
+            degreePasswordSecurity += checkingAcceptableDigits;
+            if (degreePasswordSecurity == 0) degreePasswordSecurity += 0;
+            else degreePasswordSecurity += SequenceDigits(userPassword);//порядок цифр
+            var checkingUpperСase = CheckingUpperСase(userPassword);//наличие символов большого регистра
+            degreePasswordSecurity += checkingUpperСase;
+            if (checkingUpperСase==0) degreePasswordSecurity += 0;
+            else degreePasswordSecurity += SequenceUpperСase(userPassword);//порядок символов большого регистра
+            var checkinLowerCase = CheckinLowerCase(userPassword);//наличие символов малого регистра
+            degreePasswordSecurity += checkinLowerCase;
+            if (checkinLowerCase==0) degreePasswordSecurity += 0;
             else degreePasswordSecurity += SequenceLowerCase(userPassword);//порядок символов малого регистра
             degreePasswordSecurity += CheckintSpecialCharacters(userPassword);//наличие специальных
             if (degreePasswordSecurity==8)
