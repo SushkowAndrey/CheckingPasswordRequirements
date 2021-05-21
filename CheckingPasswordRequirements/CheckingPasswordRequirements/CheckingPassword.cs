@@ -20,7 +20,7 @@ namespace CheckingPasswordRequirements
             }
             else
             {
-                Error?.Invoke($"Введенный пароль слишком короткий, число введенный символов - {userPassword.Length}. Число символов должно быть не менее {passwordRequirementsModel.GetMinCountSymbol()}"); // 2.Вызов события
+                Warning?.Invoke($"Введенный пароль слишком короткий, число введенный символов - {userPassword.Length}. Число символов должно быть не менее {passwordRequirementsModel.GetMinCountSymbol()}"); // 2.Вызов события
                 return 0;
             }
         }
@@ -35,19 +35,19 @@ namespace CheckingPasswordRequirements
                     if (userPassword[j] == passwordRequirementsModel.GetAcceptableDigits()[i])
                     {
                         count++;
-                        if (count > passwordRequirementsModel.GetMinCountDigits()) break;
+                        if (count >= passwordRequirementsModel.GetMinCountDigits()) break;
                     }
                 }
-                if (count > passwordRequirementsModel.GetMinCountDigits()) break;
+                if (count >= passwordRequirementsModel.GetMinCountDigits()) break;
             }
-            if (count > passwordRequirementsModel.GetMinCountDigits())
+            if (count >= passwordRequirementsModel.GetMinCountDigits())
             {
                 Success?.Invoke($"Количество цифр соответствует требованиям");   // 2.Вызов события
                 return 1;
             }
             else
             {
-                Error?.Invoke($"Число цифр не соответстует требованиям. Число цифр должно быть не менее {passwordRequirementsModel.GetMinCountDigits()}"); // 2.Вызов события
+                Warning?.Invoke($"Число цифр не соответстует требованиям. Число цифр должно быть не менее {passwordRequirementsModel.GetMinCountDigits()}"); // 2.Вызов события
                 return 0;
             }
         }
@@ -84,7 +84,7 @@ namespace CheckingPasswordRequirements
                 }
                 else
                 {
-                    Error?.Invoke("Порядок цифр ненадежный"); // 2.Вызов события
+                    Warning?.Invoke("Порядок цифр ненадежный"); // 2.Вызов события
                     return 0;
                 }
             }
@@ -100,19 +100,19 @@ namespace CheckingPasswordRequirements
                     if (userPassword[j] == passwordRequirementsModel.GetUpperСaseСharacters()[i])
                     {
                         count++;
-                        if (count > passwordRequirementsModel.GetMinCountUpperCharacters()) break;
+                        if (count >= passwordRequirementsModel.GetMinCountUpperCharacters()) break;
                     }
                 }
-                if (count > passwordRequirementsModel.GetMinCountUpperCharacters()) break;
+                if (count >= passwordRequirementsModel.GetMinCountUpperCharacters()) break;
             }
-            if (count > passwordRequirementsModel.GetMinCountUpperCharacters())
+            if (count >= passwordRequirementsModel.GetMinCountUpperCharacters())
             {
                 Success?.Invoke($"Количество букв большого регистра соответствует требованиям");   // 2.Вызов события
                 return 1;
             }
             else
             {
-                Error?.Invoke($"Число букв большого регистра не соответстует требованиям. Число букв большого регистра должно быть не менее {passwordRequirementsModel.GetMinCountUpperCharacters()}"); // 2.Вызов события
+                Warning?.Invoke($"Число букв большого регистра не соответстует требованиям. Число букв большого регистра должно быть не менее {passwordRequirementsModel.GetMinCountUpperCharacters()}"); // 2.Вызов события
                 return 0;
             }
         }
@@ -149,7 +149,7 @@ namespace CheckingPasswordRequirements
                 }
                 else
                 {
-                    Error?.Invoke("Порядок символов верхнего регистра ненадежный"); // 2.Вызов события
+                    Warning?.Invoke("Порядок символов верхнего регистра ненадежный"); // 2.Вызов события
                     return 0;
                 }
             }
@@ -166,19 +166,19 @@ namespace CheckingPasswordRequirements
                     if (userPassword[j] == passwordRequirementsModel.GetLowerCaseCharacters()[i])
                     {
                         count++;
-                        if (count > passwordRequirementsModel.GetMinCountLowerCharacters()) break;
+                        if (count >= passwordRequirementsModel.GetMinCountLowerCharacters()) break;
                     }
                 }
-                if (count > passwordRequirementsModel.GetMinCountLowerCharacters()) break;
+                if (count >= passwordRequirementsModel.GetMinCountLowerCharacters()) break;
             }
-            if (count > passwordRequirementsModel.GetMinCountLowerCharacters())
+            if (count >= passwordRequirementsModel.GetMinCountLowerCharacters())
             {
                 Success?.Invoke($"Количество букв малого регистра соответствует требованиям");   // 2.Вызов события
                 return 1;
             }
             else
             {
-                Error?.Invoke($"Число букв малого регистра не соответстует требованиям. Число букв малого регистра должно быть не менее {passwordRequirementsModel.GetMinCountLowerCharacters()}"); // 2.Вызов события
+                Warning?.Invoke($"Число букв малого регистра не соответстует требованиям. Число букв малого регистра должно быть не менее {passwordRequirementsModel.GetMinCountLowerCharacters()}"); // 2.Вызов события
                 return 0;
             }
         }
@@ -215,7 +215,7 @@ namespace CheckingPasswordRequirements
                 }
                 else
                 {
-                    Error?.Invoke("Порядок символов нижнего регистра ненадежный"); // 2.Вызов события
+                    Warning?.Invoke("Порядок символов нижнего регистра ненадежный"); // 2.Вызов события
                     return 0;
                 }
             }
@@ -231,33 +231,36 @@ namespace CheckingPasswordRequirements
                     if (userPassword[j] == passwordRequirementsModel.GetSpecialCharacters()[i])
                     {
                         count++;
-                        if (count > passwordRequirementsModel.GetMinCountSpecialCharacters()) break;
+                        if (count >= passwordRequirementsModel.GetMinCountSpecialCharacters()) break;
                     }
                 }
-                if (count > passwordRequirementsModel.GetMinCountSpecialCharacters()) break;
+                if (count >= passwordRequirementsModel.GetMinCountSpecialCharacters()) break;
             }
-            if (count > passwordRequirementsModel.GetMinCountLowerCharacters())
+            if (count >= passwordRequirementsModel.GetMinCountLowerCharacters())
             {
                 Success?.Invoke($"Количество спецсимволов соответствует требованиям");   // 2.Вызов события
                 return 1;
             }
             else
             {
-                Error?.Invoke($"Число спецсимволов не соответстует требованиям. Число спецсимволов должно быть не менее {passwordRequirementsModel.GetMinCountLowerCharacters()}"); // 2.Вызов события
+                Warning?.Invoke($"Число спецсимволов не соответстует требованиям. Число спецсимволов должно быть не менее {passwordRequirementsModel.GetMinCountLowerCharacters()}"); // 2.Вызов события
                 return 0;
             }
         }
         public int DegreePasswordSecurity(string userPassword)
         {
             int degreePasswordSecurity = 0;
-            degreePasswordSecurity += CheckingLength(userPassword);
-            degreePasswordSecurity += CheckingAcceptableDigits(userPassword);
-            degreePasswordSecurity += SequenceDigits(userPassword);
-            degreePasswordSecurity += CheckingUpperСase(userPassword);
-            degreePasswordSecurity += SequenceUpperСase(userPassword);
-            degreePasswordSecurity += CheckinLowerCase(userPassword);
-            degreePasswordSecurity += SequenceLowerCase(userPassword);
-            degreePasswordSecurity += CheckintSpecialCharacters(userPassword);
+            degreePasswordSecurity += CheckingLength(userPassword);//длинна пароля
+            degreePasswordSecurity += CheckingAcceptableDigits(userPassword);//наличие цифр
+            if (CheckingAcceptableDigits(userPassword) == 0) degreePasswordSecurity += 0;
+            else degreePasswordSecurity += SequenceDigits(userPassword);//порядок цифр
+            degreePasswordSecurity += CheckingUpperСase(userPassword);//наличие символов большого регистра
+            if (CheckingUpperСase(userPassword)==0) degreePasswordSecurity += 0;
+            else degreePasswordSecurity += SequenceUpperСase(userPassword);//порядок символов большого регистра
+            degreePasswordSecurity += CheckinLowerCase(userPassword);//наличие символов малого регистра
+            if (CheckinLowerCase(userPassword)==0) degreePasswordSecurity += 0;
+            else degreePasswordSecurity += SequenceLowerCase(userPassword);//порядок символов малого регистра
+            degreePasswordSecurity += CheckintSpecialCharacters(userPassword);//наличие специальных
             if (degreePasswordSecurity==8)
             {
                 Success?.Invoke($"Пароль соответствует требованиям надежности. Уровень надежности - {degreePasswordSecurity} из 8");   // 2.Вызов события
